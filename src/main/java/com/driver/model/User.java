@@ -10,11 +10,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String UserName;
-    private String PassWord;
+    private String username;
+    private String password;
     private String originalIp;
     private String maskedIp;
-    private Boolean isConnected;
+    private Boolean connected;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Connection>connectionsList;
@@ -24,7 +24,7 @@ public class User {
     private List<ServiceProvider>serviceProviderList;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-    private Country country;
+    private Country OriginalCountry;
 
     public User() {
     }
@@ -37,20 +37,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return PassWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        PassWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getOriginalIp() {
@@ -70,11 +70,11 @@ public class User {
     }
 
     public Boolean getConnected() {
-        return isConnected;
+        return connected;
     }
 
     public void setConnected(Boolean connected) {
-        isConnected = connected;
+        this.connected = connected;
     }
 
     public List<Connection> getConnectionsList() {
@@ -93,11 +93,11 @@ public class User {
         this.serviceProviderList = serviceProviderList;
     }
 
-    public Country getCountry() {
-        return country;
+    public Country getOriginalCountry() {
+        return OriginalCountry;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setOriginalCountry(Country originalCountry) {
+        this.OriginalCountry = originalCountry;
     }
 }
