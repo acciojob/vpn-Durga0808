@@ -71,7 +71,7 @@ public class ConnectionServiceImpl implements ConnectionService {
 
                 user.setMaskedIp(maskid);
                 user.setConnected(true);
-                user.getConnectionsList().add(connection);
+                user.getConnectionList().add(connection);
                 serviceProvidercheck.getConnectionList().add(connection);
                 userRepository2.save(user);
                 serviceProviderRepository2.save(serviceProvidercheck);
@@ -113,7 +113,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             String str=reciver.getMaskedIp();
             String cc=str.substring(0,3);
 
-            if(cc.equalsIgnoreCase(sender.getCountry().getCode())){
+            if(cc.equalsIgnoreCase(sender.getOriginalCountry().getCode())){
                 return sender;
             }else{
                 String countryName="";
@@ -140,11 +140,11 @@ public class ConnectionServiceImpl implements ConnectionService {
                 }
             }
         }else{
-            if(reciver.getCountry().equals(sender.getCountry())){
+            if(reciver.getOriginalCountry().equals(sender.getOriginalCountry())){
                 return sender;
             }
 
-            String countryname=reciver.getCountry().getCountryName().toString();
+            String countryname=reciver.getOriginalCountry().getCountryName().toString();
             User user=connect(senderId,countryname);
             if(!user.getConnected()){
                 throw new Exception("Cannot establish communication");

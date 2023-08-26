@@ -13,7 +13,7 @@ public class Admin {
     private String username;
     private String password;
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
-    private List<ServiceProvider> serviceProviderList;
+    private List<ServiceProvider> serviceProviders;
 
     public Admin() {
 
@@ -43,11 +43,11 @@ public class Admin {
         this.password = password;
     }
 
-    public List<ServiceProvider> getServiceProviderList() {
-        return serviceProviderList;
+    public List<ServiceProvider> getServiceProviders() {
+        return serviceProviders;
     }
 
-    public void setServiceProviderList(List<ServiceProvider> serviceProviderList) {
-        this.serviceProviderList = serviceProviderList;
+    public void setServiceProviders(List<ServiceProvider> serviceProviders) {
+        this.serviceProviders = serviceProviders;
     }
 }

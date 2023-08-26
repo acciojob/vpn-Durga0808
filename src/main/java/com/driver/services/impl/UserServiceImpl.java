@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
         }
         String cname= sb.toString();
         if(cname.equals("IND")||cname.equals("USA")||cname.equals("JPN")||cname.equals("CHI")||cname.equals("AUS")){
-            user.setUserName(username);
-            user.setPassWord(password);
+            user.setUsername(username);
+            user.setPassword(password);
             Country country=new Country();
 
             if(cname.equals("IND")){
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
                 country.setCode(CountryName.AUS.toCode());
             }
             country.setUser(user);
-            user.setCountry(country);
+            user.setOriginalCountry(country);
             user.setConnected(false);
 
             String code=country.getCode()+"."+userRepository3.save(user).getId();
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
         ServiceProvider serviceProvider=serviceProviderRepository3.findById(serviceProviderId).get();
         User user=userRepository3.findById(userId).get();
         user.getServiceProviderList().add(serviceProvider);
-        serviceProvider.getUserList().add(user);
+        serviceProvider.getUsers().add(user);
         serviceProviderRepository3.save(serviceProvider);
         userRepository3.save(user);
         return user;
