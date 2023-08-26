@@ -10,21 +10,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String username;
-    private String password;
+    private String UserName;
+    private String PassWord;
     private String originalIp;
     private String maskedIp;
-    private Boolean connected;
+    private Boolean isConnected;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Connection> connectionList;
+    private List<Connection>connectionsList;
 
     @ManyToMany
     @JoinColumn
     private List<ServiceProvider>serviceProviderList;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-    private Country OriginalCountry;
+    private Country country;
 
     public User() {
     }
@@ -37,20 +37,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return PassWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        PassWord = passWord;
     }
 
     public String getOriginalIp() {
@@ -70,19 +70,19 @@ public class User {
     }
 
     public Boolean getConnected() {
-        return connected;
+        return isConnected;
     }
 
     public void setConnected(Boolean connected) {
-        this.connected = connected;
+        isConnected = connected;
     }
 
-    public List<Connection> getConnectionList() {
-        return connectionList;
+    public List<Connection> getConnectionsList() {
+        return connectionsList;
     }
 
-    public void setConnectionList(List<Connection> connectionList) {
-        this.connectionList = connectionList;
+    public void setConnectionsList(List<Connection> connectionsList) {
+        this.connectionsList = connectionsList;
     }
 
     public List<ServiceProvider> getServiceProviderList() {
@@ -93,11 +93,11 @@ public class User {
         this.serviceProviderList = serviceProviderList;
     }
 
-    public Country getOriginalCountry() {
-        return OriginalCountry;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setOriginalCountry(Country originalCountry) {
-        this.OriginalCountry = originalCountry;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

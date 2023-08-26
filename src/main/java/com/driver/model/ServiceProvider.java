@@ -16,7 +16,7 @@ public class ServiceProvider {
     private Admin admin;
 
     @ManyToMany(mappedBy = "serviceProviderList",cascade = CascadeType.ALL)
-    private List<User> users;
+    private List<User>userList;
 
     @OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL)
     private List<Country>countryList;
@@ -58,12 +58,12 @@ public class ServiceProvider {
         this.admin = admin;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public List<Country> getCountryList() {
