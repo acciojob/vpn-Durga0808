@@ -7,10 +7,11 @@ import java.util.List;
 @Table
 public class Admin {
     @Id
-    private Integer Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private String UserName;
-    private String Password;
+    private String username;
+    private String password;
     @OneToMany(mappedBy = "admin",cascade = CascadeType.ALL)
     private List<ServiceProvider> serviceProviderList;
 
@@ -19,27 +20,27 @@ public class Admin {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public List<ServiceProvider> getServiceProviderList() {
